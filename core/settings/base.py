@@ -39,7 +39,6 @@ BASE_APPS = [
 
 LOCAL_APPS = [
     'apps.users',
-    'apps.tests',
     'apps.base',
     'apps.products',
 ]

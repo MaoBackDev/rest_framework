@@ -36,3 +36,5 @@ sqlparse==0.4.3
 ## Creación del proyecto
 
 
+## Viewsets
+Una ViewSetclase es simplemente un tipo de Vista basada en clases, que no proporciona ningún controlador de métodos como .get()o .post(), sino que proporciona acciones como .list()y .create(). Un viewset a diferencia de las clases genéricas, proporciona otros métodos (Acciones) para realizar sus tareas. Algunos métodos son: list(), create()
