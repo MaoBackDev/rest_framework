@@ -3,9 +3,11 @@ from rest_framework import status
 from rest_framework import viewsets
 
 from apps.products.api.serializers.product_serializers import ProductSerializer
+from apps.users.authentication_mixins import Authentication
 
 
-class ProductViewset(viewsets.ModelViewSet):
+
+class ProductViewset(Authentication, viewsets.ModelViewSet):
     serializer_class = ProductSerializer
     # queryset = ProductSerializer.Meta.model.objects.filter(state=True)
 
@@ -13,6 +15,10 @@ class ProductViewset(viewsets.ModelViewSet):
         if pk is None:
             return self.get_serializer().Meta.model.objects.filter(state=True)
         return self.get_serializer().Meta.model.objects.filter(id=pk, state=True).first()
+    
+    def list(self, request):
+        product_serializer = self.get_serializer(self.get_queryset(), many=True)
+        return Response(product_serializer.data, status=status.HTTP_200_OK)
         
 
     def create(self, request):
